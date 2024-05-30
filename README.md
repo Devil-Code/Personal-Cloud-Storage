@@ -6,9 +6,9 @@ This repository contains detailed instructions and scripts for setting up a pers
 
 ## Screenshots
 
-![Alt Text](Image_URL)
+![Alt Text](screenshots/raspberry.png)
 
-![Alt Text](Image_URL)
+![Alt Text](screenshots/storage.png)
 
 ## Table of Contents
 
@@ -22,6 +22,8 @@ This repository contains detailed instructions and scripts for setting up a pers
 - [License](#license)
 
 ## Setup Instructions
+
+![Alt Text](screenshots/design.png)
 
 ### Raspberry Pi Setup
 
