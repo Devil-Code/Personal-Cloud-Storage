@@ -1,0 +1,68 @@
+1. **NGINX and PHP Installation**:
+   - To prepare the Raspberry Pi for running OwnCloud, NGINX and PHP need to be installed along with various PHP modules required by OwnCloud.
+   - Commands:
+     ```bash
+     sudo apt-get update
+     sudo apt-get upgrade
+     sudo usermod -a -G www-data www-data
+     sudo apt-get install nginx openssl ssl-cert php7.3-xml php7.3-dev php7.3-curl php7.3-gd php7.3-fpm php7.3-zip php7.3-intl php7.3-mbstring php7.3-cli php7.3-mysql php7.3-common php7.3-cgi php7.3-apcu php7.3-redis redis-server php-pear curl libapr1 libtool libcurl4-openssl-dev
+     ```
+
+2. **SSL Configuration**:
+   - SSL (Secure Sockets Layer) certificate is required to enable HTTPS connections for OwnCloud, ensuring secure communication between clients and the server.
+   - Commands:
+     ```bash
+     sudo openssl req $@ -new -x509 -days 730 -nodes -out /etc/nginx/cert.pem -keyout /etc/nginx/cert.key
+     sudo openssl dhparam -out /etc/nginx/dh2048.pem 2048
+     sudo chmod 600 /etc/nginx/cert.pem
+     sudo chmod 600 /etc/nginx/cert.key
+     sudo chmod 600 /etc/nginx/dh2048.pem
+     ```
+
+3. **NGINX Configuration**:
+   - NGINX needs to be configured to work with OwnCloud and support HTTPS connections.
+   - Commands:
+     ```bash
+     sudo sh -c "echo '' > /etc/nginx/sites-available/default"
+     sudo nano /etc/nginx/sites-available/default
+     sudo systemctl restart nginx
+     ```
+
+4. **PHP Configuration**:
+   - Adjust PHP configuration settings to accommodate OwnCloud's requirements, such as increasing upload and post sizes.
+   - Commands:
+     ```bash
+     sudo nano /etc/php/7.3/fpm/php.ini
+     sudo nano /etc/php/7.3/fpm/pool.d/www.conf
+     ```
+
+5. **Swap Memory Setup**:
+   - Adding swap memory allows the Raspberry Pi to extend its memory usage, enhancing performance.
+   - Commands:
+     ```bash
+     sudo nano /etc/dphys-swapfile
+     sudo reboot
+     ```
+
+6. **MySQL Database Setup**:
+   - OwnCloud requires a MySQL database for storing user data. Here, we create a database and a user for OwnCloud.
+   - Commands:
+     ```bash
+     sudo mysql -u root -p
+     CREATE DATABASE ownclouddb;
+     CREATE USER 'ownclouduser'@'localhost' IDENTIFIED BY '[PASSWORD]';
+     FLUSH PRIVILEGES;
+     ```
+
+7. **OwnCloud Installation**:
+   - Download and extract the OwnCloud archive, set appropriate permissions, and configure OwnCloud settings.
+   - Commands:
+     ```bash
+     cd /var/www/
+     sudo wget https://download.owncloud.org/community/owncloud-latest.tar.bz2
+     sudo tar -xvf owncloud-latest.tar.bz2
+     sudo chown -R www-data:www-data /var/www
+     sudo nano /var/www/owncloud/.user.ini
+     ```
+
+These steps ensure that the Raspberry Pi is properly configured to run OwnCloud, providing a self-hosted cloud storage solution with enhanced security and control over data.
