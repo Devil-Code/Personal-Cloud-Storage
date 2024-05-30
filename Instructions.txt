@@ -1,4 +1,4 @@
-Certainly! Here's a comprehensive list of instructions with commands and their uses for setting up a personal cloud using Raspberry Pi and OwnCloud:
+Here's a comprehensive list of instructions with commands and their uses for setting up a personal cloud using Raspberry Pi and OwnCloud:
 
 1. **Raspberry Pi Setup**:
 
