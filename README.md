@@ -20,6 +20,7 @@ This repository contains detailed instructions and scripts for setting up a pers
 - [Limitations](#limitations)
 - [Contributing](#contributing)
 - [License](#license)
+- [Contact Information](#contact-information)
 
 ## Setup Instructions
 
@@ -71,3 +72,12 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 ## License
 
 This project is licensed under the [GNU GPL v3.0](LICENSE).
+
+## Contact Information
+
+For any inquiries or issues, please contact:
+- **Pritesh Gandhi**
+- **Email**: pgandhi1412@gmail.com
+- **GitHub**: [YourGitHubProfile](https://github.com/Devil-Code)
+
+
